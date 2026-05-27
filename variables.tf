@@ -1,7 +1,24 @@
 # -----------------------------------------------------------------------------
 # Module-Specific Variables
-#
-# Note: Standard labeling variables (enabled, namespace, tenant, environment,
-# stage, name, delimiter, attributes, tags, label_order, etc.) are provided
-# by context.tf via the tf-label module.
 # -----------------------------------------------------------------------------
+
+variable "api_name" {
+  type        = string
+  description = "Name of the WebSocket API"
+}
+
+variable "stage_name" {
+  type        = string
+  description = "Deployment stage name"
+}
+
+variable "routes" {
+  type        = map(string)
+  description = "Map of route key to Lambda function ARN (e.g. {\"$connect\" = \"arn:aws:lambda:...\"})"
+}
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags to apply to all resources"
+}
